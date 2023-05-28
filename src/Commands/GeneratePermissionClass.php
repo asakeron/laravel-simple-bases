@@ -4,7 +4,6 @@ namespace LaravelSimpleBases\Commands;
 
 use Illuminate\Console\Command;
 use LaravelSimpleBases\Templates\ControllerTemplate;
-use LaravelSimpleBases\Templates\ModelTemplate;
 use LaravelSimpleBases\Templates\PermissionTemplate;
 use LaravelSimpleBases\Templates\ServiceTemplate;
 use LaravelSimpleBases\Templates\TransformerTemplate;
