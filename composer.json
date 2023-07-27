@@ -28,7 +28,6 @@
     "webpatser/laravel-uuid": "^4",
     "spatie/laravel-fractal": "^5",
     "spatie/laravel-activitylog": "^3",
-    "krlove/eloquent-model-generator": "^1",
     "tymon/jwt-auth": "^1",
     "laravel/framework": "^8"
   },
