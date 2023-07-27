@@ -6,14 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFilesTables extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public const tableName = 'files';
+
+    public function up(): void
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create(self::tableName, function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid');
 
@@ -27,13 +24,8 @@ class CreateFilesTables extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('files_tables');
+        Schema::dropIfExists(self::tableName);
     }
 }

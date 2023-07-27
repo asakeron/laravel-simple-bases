@@ -4,29 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use CreateFilesTables;
+
 class AddNameFilesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    private const columnName = 'name';
+
+    public function up(): void
     {
-        Schema::table('files', function (Blueprint $table) {
-            $table->string('name')->nullable();
+        Schema::table(CreateFilesTables::tableName, function (Blueprint $table) {
+            $table->string(self::columnName)->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
-        Schema::table('files', function (Blueprint $table) {
-            //
+        Schema::table(CreateFilesTables::tableName, function (Blueprint $table) {
+            $table->dropColumn(self::columnName);
         });
     }
 }
