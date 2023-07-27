@@ -1,6 +1,5 @@
 <?php
 
-
 namespace LaravelSimpleBases\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -11,29 +10,28 @@ use Throwable;
 
 abstract class BaseHandlerException extends ExceptionHandler
 {
-    public function render($request, $exception)
+    public function render($request, Throwable $e)
     {
-
-        if (get_parent_class($exception) === BaseException::class) {
-            return $exception->response();
+        if (get_parent_class($e) === BaseException::class) {
+            return $e->response();
         }
 
-        if (get_class($exception) === NotFoundHttpException::class) {
+        if (get_class($e) === NotFoundHttpException::class) {
             return response_exception(
                 'Route not found',
                 StatusCodeUtil::BAD_REQUEST,
-                $exception->getFile(),
-                $exception->getLine(),
-                $exception->getTraceAsString(),
+                $e->getFile(),
+                $e->getLine(),
+                $e->getTraceAsString(),
             );
         }
 
         return response_exception(
-            $exception->getMessage(),
+            $e->getMessage(),
             StatusCodeUtil::INTERNAL_SERVER_ERROR,
-            $exception->getFile(),
-            $exception->getLine(),
-            $exception->getTraceAsString(),
+            $e->getFile(),
+            $e->getLine(),
+            $e->getTraceAsString(),
             [],
             true
         );

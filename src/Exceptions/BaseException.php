@@ -1,41 +1,30 @@
 <?php
 
-
 namespace LaravelSimpleBases\Exceptions;
 
 use Exception;
 
 abstract class BaseException extends Exception
 {
+    protected int $statusCode;
+    protected array $fields = [];
 
-    protected $statusCode;
-    protected $fields = [];
-
-    /**
-     * @return int
-     */
     public function getStatusCode(): int
     {
         return $this->statusCode;
     }
 
-    /**
-     * @return array
-     */
     public function getFields(): array
     {
         return $this->fields;
     }
-
-    public function setFields(array $fields)
+    
+    public function setFields(array $fields): void
     {
         $this->fields = $fields;
     }
 
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function response()
+    public function response(): \Illuminate\Http\JsonResponse
     {
         return response_exception(
             $this->getMessage(),
@@ -46,5 +35,4 @@ abstract class BaseException extends Exception
             $this->getFields()
         );
     }
-
 }
