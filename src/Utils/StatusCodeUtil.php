@@ -1,6 +1,5 @@
 <?php
 
-
 namespace LaravelSimpleBases\Utils;
 
 class StatusCodeUtil

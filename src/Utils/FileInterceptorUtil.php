@@ -1,12 +1,12 @@
 <?php
 
-
 namespace LaravelSimpleBases\Utils;
 
+use Illuminate\Database\Eloquent\Model;
 
 class FileInterceptorUtil
 {
-    static function getSaveLocation($model)
+    static function getSaveLocation(Model $model): string
     {
         $array = explode('\\', get_class($model));
         $lastIndex = array_key_last(explode('\\', get_class($model)));
@@ -15,10 +15,10 @@ class FileInterceptorUtil
 
     }
 
-    static function makeUrl($model, $file, $extension)
+    static function makeUrl(string $modelName, string $file, string $extension): string
     {
-        $array = explode('\\', $model);
-        $lastIndex = array_key_last(explode('\\', $model));
+        $array = explode('\\', $modelName);
+        $lastIndex = array_key_last(explode('\\', $modelName));
 
         return config('filesystems.bucket_url', config('app.url'))
 	    . '/files/'
